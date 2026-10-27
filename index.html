@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101610">
+  <meta name="description" content="Calcule preços de venda, custos e lucro com o Preço Justo.">
+  <title>Preço Justo — Calcule seu lucro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Preço Justo, início">
+      <span class="brand-icon">P</span><span>preço<span class="green">justo</span></span>
+    </a>
+    <span class="free-tag">100% GRATUITO</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="eyebrow">SUA RENDA, SOB CONTROLE</span>
+      <h1>Seu trabalho<br>vale o <span class="green">preço justo.</span></h1>
+      <p>Descubra quanto cobrar, cubra seus custos e saiba quanto realmente ganha.</p>
+    </section>
+
+    <section class="calculator panel">
+      <div class="section-heading">
+        <div><span class="step">01 — CALCULADORA</span><h2>Monte seu preço</h2></div>
+        <span class="calc-icon" aria-hidden="true">↗</span>
+      </div>
+
+      <form id="priceForm">
+        <label for="product">O que você vende?</label>
+        <input id="product" type="text" maxlength="80" placeholder="Ex.: Bolo de chocolate">
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="materials">Materiais e ingredientes (R$)</label>
+            <input id="materials" type="number" min="0" max="100000000" step="0.01" value="15" required>
+          </div>
+          <div class="field">
+            <label for="other">Outros custos (R$)</label>
+            <input id="other" type="number" min="0" max="100000000" step="0.01" value="5" required>
+          </div>
+          <div class="field">
+            <label for="hours">Horas de trabalho</label>
+            <input id="hours" type="number" min="0" max="100000" step="0.25" value="1" required>
+          </div>
+          <div class="field">
+            <label for="hourly">Valor por hora (R$)</label>
+            <input id="hourly" type="number" min="0" max="100000000" step="0.01" value="20" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="fees">Taxas sobre a venda (%)</label>
+          <input id="fees" type="number" min="0" max="99.99" step="0.1" value="5" required>
+          <small>Ex.: taxas de cartão ou de plataformas.</small>
+        </div>
+
+        <div class="field">
+          <div class="label-row"><label for="margin">Margem de lucro desejada</label><strong id="marginLabel">25%</strong></div>
+          <input id="margin" type="range" min="0" max="70" value="25">
+          <div class="range-labels"><span>0%</span><span>35%</span><span>70%</span></div>
+        </div>
+
+        <button class="primary-btn" type="submit">Calcular preço ideal <span>→</span></button>
+      </form>
+    </section>
+
+    <section class="results panel" id="results" aria-live="polite">
+      <div class="result-main">
+        <span class="result-label">PREÇO DE VENDA SUGERIDO</span>
+        <div class="price" id="suggestedPrice">R$ 0,00</div>
+        <p id="resultDescription">Valor calculado para cobrir os custos e alcançar a margem desejada.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><span>Custo total</span><strong id="totalCost">R$ 0,00</strong></div>
+        <div class="stat"><span>Lucro estimado</span><strong class="green" id="profit">R$ 0,00</strong></div>
+        <div class="stat"><span>Taxas da venda</span><strong id="feeAmount">R$ 0,00</strong></div>
+        <div class="stat"><span>Margem alcançada</span><strong id="actualMargin">0%</strong></div>
+      </div>
+      <div class="breakdown">
+        <h3>Para onde vai o dinheiro?</h3>
+        <div class="bar" role="img" aria-label="Distribuição do preço entre custos, taxas e lucro">
+          <div id="costBar"></div><div id="feeBar"></div><div id="profitBar"></div>
+        </div>
+        <div class="legend">
+          <span><i class="dot cost-dot"></i> Custos</span>
+          <span><i class="dot fee-dot"></i> Taxas</span>
+          <span><i class="dot profit-dot"></i> Lucro</span>
+        </div>
+      </div>
+      <button id="saveBtn" class="secondary-btn" type="button">Salvar este cálculo</button>
+      <button id="shareBtn" class="text-btn" type="button">Compartilhar resultado ↗</button>
+      <p id="message" class="message" role="status"></p>
+    </section>
+
+    <section class="history panel">
+      <div class="section-heading">
+        <div><span class="step">02 — SEUS REGISTROS</span><h2>Cálculos salvos</h2></div>
+        <button id="clearBtn" class="clear-btn" type="button">Limpar</button>
+      </div>
+      <div id="historyList" class="history-list"><p class="empty">Seus cálculos salvos aparecerão aqui.</p></div>
+    </section>
+
+    <section class="tip">
+      <span class="tip-icon" aria-hidden="true">✳</span>
+      <div><h3>Uma dica importante</h3><p>Inclua todos os custos, inclusive embalagens, energia e seu próprio trabalho. Um preço alto não garante lucro se você esquecer despesas.</p></div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="#"><span class="brand-icon">P</span><span>preço<span class="green">justo</span></span></a>
+    <p>Feito para quem quer crescer.</p>
+    <small>Os resultados são estimativas baseadas nos dados informados.</small>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
